@@ -37,11 +37,6 @@ class PickupSensor(
         entryTimestamp = SystemClock.elapsedRealtime()
         if (event.values[0] == sensorValue) {
             if (Utils.isPickUpSetToWake(context)) {
-                wakeLock.acquire(WAKELOCK_TIMEOUT_MS)
-                powerManager.wakeUpWithProximityCheck(
-                    SystemClock.uptimeMillis(), PowerManager.WAKE_REASON_GESTURE, TAG
-                )
-            } else {
                 Utils.launchDozePulse(context)
             }
         }
